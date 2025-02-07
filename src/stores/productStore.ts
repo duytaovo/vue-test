@@ -8,6 +8,8 @@ interface Product {
   description: string
 }
 
+const URL = 'http://localhost:3000/products'
+
 export const useProductStore = defineStore('product', {
   state: () => ({
     products: [] as Product[],
@@ -35,7 +37,7 @@ export const useProductStore = defineStore('product', {
     async fetchProducts() {
       this.loading = true
       try {
-        const response = await axios.get('http://localhost:3000/products')
+        const response = await axios.get(URL)
         this.products = response.data
         this.filteredProducts = response.data
       } catch (error) {
@@ -53,7 +55,7 @@ export const useProductStore = defineStore('product', {
     async addProduct(newProduct: Product) {
       try {
         const response = await axios.post(
-          'http://localhost:3000/products',
+          URL,
           newProduct
         )
         this.products.push(response.data)
@@ -66,7 +68,7 @@ export const useProductStore = defineStore('product', {
     async updateProduct(id: number, updatedData: Partial<Product>) {
       try {
         const response = await axios.patch(
-          `http://localhost:3000/products/${id}`,
+          `${URL}/${id}`,
           updatedData
         )
         const index = this.products.findIndex((p) => p.id === id)
@@ -80,7 +82,7 @@ export const useProductStore = defineStore('product', {
     },
     async deleteProduct(id: number) {
       try {
-        await axios.delete(`http://localhost:3000/products/${id}`)
+        await axios.delete(`${URL}/${id}`)
         this.products = this.products.filter((p) => p.id !== id)
         this.filteredProducts = this.getFilteredProducts
       } catch (error) {
