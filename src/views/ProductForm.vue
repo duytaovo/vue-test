@@ -16,7 +16,7 @@ const newProduct = ref({
 
 const handleSubmit = async () => {
   await store.addProduct(newProduct.value)
-  successToast('Product has been successfully created').showToast()
+  successToast('Đã thêm sản phẩm thành công.').showToast()
   newProduct.value = { title: '', price: 0, description: '' }
   router.push('/') 
 }

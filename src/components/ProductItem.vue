@@ -18,7 +18,7 @@ defineProps<Props>()
 
 const deleteProduct = async (id: number) => {
   await store.deleteProduct(id)
-  successToast('Product has been successfully deleted').showToast()
+  successToast('Đã xóa sản phẩm thành công').showToast()
   await store.fetchProducts() 
 }
 </script>
