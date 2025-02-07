@@ -1,0 +1,16 @@
+{
+  "products": [
+    {
+      "id": "e54b",
+      "title": "Iphone 16 promax",
+      "price": 200,
+      "description": ""
+    },
+    {
+      "id": "e54c",
+      "title": "Samsung galaxy",
+      "price": 300,
+      "description": ""
+    }
+  ]
+}
